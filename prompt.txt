@@ -1,0 +1,25 @@
+
+
+High-level description:
+
+[This code creates a small text generation model using an LSTM. LSTM is a specialized RNN which can remember and process sequential data.
+It first takes a small set of sentences like “I like cats,” “I like dogs,” and
+“I like pizza.” Since the model cannot directly understand characters, the code converts each character into a number. It also creates a reverse mapping so that the predicted numbers 
+can later be converted back into characters.
+The code then creates training examples by taking 40 characters at a time and asking the model to predict the next character.
+The model is trained on these examples and learns patterns from the text. After training, it can generate new text by predicting one character at a time based on the characters it has already seen.
+The model has an Embedding layer, an LSTM layer, and a Dense output layer. The Embedding layer converts character IDs into numerical representations, the LSTM learns patterns from the sequence of characters, 
+and the Dense layer gives a score for every possible next character.
+The model is trained for 20 epochs. During training, it updates its weights to reduce the prediction error. 
+After training, the model can generate new text by predicting one character at a time and using each predicted character as part of the input for the next prediction.]
+
+
+Behavior of the demo:
+
+[Before generating text, the demo prints some information about the training data, including the total length of the training text, the unique characters in the vocabulary, 
+the number of training samples created, and the final training loss. After that, it tests different temperature values and generates text starting from “I like
+The model predicts one character at a time and keeps adding each new character to the output.
+One character is selected, added to the generated text, and then used as part of the input for the next prediction. This process continues repeatedly to generate a longer piece of text.
+The demo uses different temperature values: 0.1, 0.5, 0.7, and 1.0. A lower temperature makes the output more predictable because the model mostly chooses the most likely characters.
+A higher temperature makes the output more random because the model is more willing to choose less likely characters.
+For each temperature, the demo also shows the most likely options for the first next character along with their probabilities, and then generates a longer text output.]
